@@ -46,5 +46,62 @@ $ npm login --registry=https://nexus.in.devexperts.com/repository/npm-dx-private
 ```
 > For login and password, you need to submit your username and passwords from devexperts.
 
+# Initial project setup
+#### Open stash with a project [Browse RIA Development / dxtf - Devexperts Stas](https://stash.in.devexperts.com/projects/RIA/repos/dxtf/browse)h
+1.	`git clone <project_url>` and open it in your IDE.
+2.	`git checkout release/276` (branch for Spectraxe project).
+3.	`cd dxtrade5-fe-resources` (directory with frontend resources).
+4.	`yarn install` (install all required dependencies).
+5.	`cd ../proxy` -> `yarn install` (install proxy packages for using proxy).
+6.	`cd ../ dxtrade5-fe-resources` (return to dxtrade5-fe-resources for implementing further commands from this directory).
+7.	Run commands to check everything works correctly (only for first launch recommended):
+- `yarn build` (makes bundle with the latest changes)
+- `yarn storybook:local`  (local start storybook)
+- `yarn test`  (frontend tests execution)
+- `yarn proxy:dev` (Project’s proxy launch. Can login to it using http://localhost:3333/)
+> Note : For test credentials, please ask your linear manager.
+
+# FULL BUILD of DXTF
+#### In advance is needed to install Java 11 and Apache-maven 3.8.6.
+Full guide for build is described [here](https://confluence.in.devexperts.com/display/dxTrade5/New+Developer+-+Setting+up+the+environment)
+#### After successful build:
+•	`cd dxtrade5-vendors/dxtrade5-spectrafx`
+•	run `./run.bat dev` or `./run.sh dev` depends of OS 
+#### Then try to open http://localhost:8080/dxtrade5/?vendor=spectrafx&lang=en
+#### If everything is ok, you’ll see the login form.
+
+# Development process
+### Eslint config.
+#### Eslint is a static code analysis tool for identifying problematic patterns found in JavaScript/Typescript code.
+#### To config eslint on save action:
+-	Install Eslint extension for VS code.
+-	In Visual Code Studio -> File -> Preferences -> Settings -> Code Actions On Save
+-	Edit settings.json with:
+```
+"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+}
+```
+
+-	reload VS code.
+> Note: Eslint on save starts working when it is preinstalled locally or globally. Eslint extension is searching for the nearest .eslintrc config file to apply all specified rules.
+
+### Create a new branch for ticket.
+#### Steps:
+- Open dedicated ticket on Jira. 
+- Find on the right panel development tab. Click “create branch”.
+
+#### There are several fields in the ticket creation tab:
+ 
+- **Branch type**: branch type should reflect the type of your ticket.
+
+- **Branch from**: release/276.
+
+- **Branch name**: due to long names generated from JIRA-Bitbucket plugin we usually shorten it to 20-30 symbols, left jira key and most meaningful text. It's made to handle branches in console - cause it's hard to handle huge lines without able to copy them.
+
+
+
+
+
 
 
